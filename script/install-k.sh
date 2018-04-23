@@ -60,11 +60,11 @@ install_k() {
     msg "Building K."
     cd k5 || exit 1
     export maven_opts="-xx:+tieredcompilation" || exit 1
-    mvn package || exit 1
+    sudo mvn package || exit 1
     msg "Setting up OCAML backend."
     ./k-distribution/target/release/k/bin/k-configure-opam; eval "$(opam config env)" || exit 1
     msg "Running fast tests."
-    mvn verify -DskipKTest || exit 1
+    sudo mvn verify -DskipKTest || exit 1
     msg "Building release."
     sudo mvn install || exit 1
 }
