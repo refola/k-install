@@ -66,7 +66,7 @@ install_k() {
     msg "Running fast tests."
     mvn verify -DskipKTest || exit 1
     msg "Building release."
-    mvn install || exit 1
+    sudo mvn install || exit 1
 }
 
 # Check parameter existence and (run installation xor show usage message)
